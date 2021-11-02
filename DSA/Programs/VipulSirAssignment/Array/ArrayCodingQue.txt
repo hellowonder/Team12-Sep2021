@@ -1,0 +1,23 @@
+1. Write a program to merge two arrays of integers by reading one number at a time from each array until 
+one of the array is exhausted, and then concatenating the remaining numbers.
+ Input: [23,60,94,3,102] and [42,16,74]
+ Output: [23,42,60,16,94,74,3,102]
+ 
+ 2.Write a program which takes an array of integers and prints the running average of 3 consecutive integers. 
+In case the array has fewer than 3 integers, there should be no output.
+ Input: [5,14,35,89,140]
+
+Output: [18, 46, 88] 
+(Explanation: 18=(5+14+35/3, 46=(14+35+89)/3, ...)
+
+3. Write a program which generates the series 1,4,27,16,125,36
+
+4.Given an array of integers, print whether the numbers are in ascending order or in descending order or 
+in random order without sorting
+ Input: [5,14,35,90,139] Output: Ascending 
+ Input: [88,67,35,14,-12] Output: Descending
+Input: [65,14,129,34,7] Output: Random 
+
+5.Print the third-largest number in an array without sorting it 
+Input: [ 24,54,31,16,82,45,67]
+Output: 54 (82 and 67 are the largest and second-largest)
