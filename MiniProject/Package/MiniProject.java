@@ -1,3 +1,6 @@
+package Package;
+
+import Package.*;
 import java.util.*;
 
 class UserDefinedException extends Exception {
