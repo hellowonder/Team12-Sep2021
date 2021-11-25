@@ -1,12 +1,12 @@
-
-//project name: GuessGame
-//Name: Shubham Mandlik  Roll No: 210940320114
-//Name: Varunakar Shukla  Roll No: 210940520113
-import java.util.Scanner;
+import java.util.*;
 
 class Node {
     int data;
-    Node next = null;
+    Node next;
+
+    Node() {
+        next = null;
+    }
 
     Node(int d) {
         data = d;
@@ -14,32 +14,35 @@ class Node {
     }
 }
 
-class LinkedList4 {
-    Node head;
+class LinkedList1 {
 
-    // isertion at last
-    public void insertAtLast(int d) {
-        Node node = new Node(d);
+    static void printList(Node head) {
+        Node current = head.next;
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }
+
+    static void insertElemnt(int data, Node head) {
+
+        Node toInsert = new Node(data);
         if (head == null) {
-            head = node;
+            head = toInsert;
         } else {
-            Node n = head;
-            while (n.next != null) {
-                n = n.next;
+            toInsert.next = null;
+            Node last = head;
+            while (last.next != null) {
+                last = last.next;
             }
-            n.next = node;
+            last.next = toInsert;
         }
     }
 
-    // printing the linked list
-    public void show() {
-        Node n = head;
-        while (n != null) {
-            System.out.print(n.data + " ");
-            n = n.next;
-        }
+    static void deleteFirstElement(Node head) {
+        System.out.println(head.data + " Deleted element");
+        head = head.next;
     }
-
 }
 
 class UserDefinedException extends Exception {
@@ -70,22 +73,19 @@ public class MiniProject {
     }
 
     public static void main(String[] args) {
-
-        LinkedList4 list = new LinkedList4();
-
-        System.out.println("Welcome!");
+        Node head = new Node();
+        System.out.println("Welcome to the virtual gaming world.");
         System.out.println("Hint: Secret Number is in a range of  0 to 100");
 
         int secretNumber = secretNumber();
         int GuessNumber = 0, count = 10;
-        // boolean check = false;
+        boolean check = false;
 
         System.out.println("");
         System.out.println("You have to find the secret number within 10 attempts");
 
         int i, j = 10;
         for (i = 1; i <= j; i++) {
-            boolean check = false;
             System.out.println("Enter Guess Number: ");
 
             // Exception Handling
@@ -105,33 +105,26 @@ public class MiniProject {
             // Range Suggestion
             if (check == false) {
                 if (GuessNumber < secretNumber) {
-                    list.insertAtLast(GuessNumber);
-                    System.out.println("Hints: Number is so small");
+                    LinkedList1.insertElemnt(GuessNumber, head);
+                    System.out.println("Number is so small");
                     System.out.println();
                 } else if (GuessNumber > secretNumber) {
-                    list.insertAtLast(GuessNumber);
-                    System.out.println("Hints: Number is so large");
+                    LinkedList1.insertElemnt(GuessNumber, head);
+                    System.out.println("Number is so large");
                     System.out.println();
                 } else if (GuessNumber == secretNumber) {
-                    list.insertAtLast(GuessNumber);
-                    System.out.println(" ");
-                    System.out.println("_".repeat(48));
+                    LinkedList1.insertElemnt(GuessNumber, head);
                     System.out.println("Congrats, Your guess is correct");
                     System.out.println("Total Earn Points for this game is: " + (count * 10));
-                    // System.out.println();
+                    System.out.println();
                     break;
                 }
                 System.out.println("Total number of remaining attempt!: " + (--count));
-
             } else {
                 System.out.println("Total number of remaining attempt!: " + (--count));
             }
         }
-        System.out.println("_".repeat(48));
-        if (count == 0) {
-            System.out.println("You Loss!");
-        }
-        System.out.println("Total number you entered!");
-        list.show();
+        System.out.println("These are the following Guess you Enter:");
+        LinkedList1.printList(head);
     }
 }
