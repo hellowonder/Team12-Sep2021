@@ -67,6 +67,23 @@ call abc4('King',12,12);
 call abc4('Scott',0.15,12);
 select * from tempp;
 
+create table temperature(degree float, Fahrenheit float);
+delimiter //
+create procedure temp(t float)
+begin
+	declare c float default 0;
+    set c = ((t - 32)*5/9);
+    insert into temperature values(c, t);
+end; //
+delimiter ;
+call temp(73.2);
+select * from temperature;
+
+
+
+
+
+
 
 
 
